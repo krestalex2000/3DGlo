@@ -6,7 +6,7 @@ const menu = () => {
 
   const handleMenu = () => {
     menu.classList.toggle('active-menu');
-  }
+  };
 
   menuBtn.addEventListener('click', handleMenu);
   closeBtn.addEventListener('click', handleMenu);
