@@ -12,6 +12,19 @@ const calc = (price = 100) => {
     }
   };
 
+  const animateTotalValue = (number, elem, step, time) => {
+    let count = 0;
+    const interval = setInterval(() => {
+
+      if (count >= number) {
+        clearInterval(interval);
+      }
+
+      elem.textContent = count;
+      count += step;
+    }, time);
+  };
+
   const countCalc = () => {
     const calcTypeValue = calcType.options[calcType.selectedIndex].value;
     const calcSquareValue = calcSquare.value;
@@ -36,7 +49,7 @@ const calc = (price = 100) => {
       totalValue = 0;
     }
 
-    total.textContent = totalValue;
+    animateTotalValue(totalValue, total, 100, 10);
   };
 
   calcBlock.addEventListener('input', e => {
