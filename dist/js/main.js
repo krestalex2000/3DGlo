@@ -16,7 +16,27 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./modules/modal.js\");\n/* harmony import */ var _modules_pageScroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/pageScroll */ \"./modules/pageScroll.js\");\n\r\n\r\n\r\n\r\n\r\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('19 september 2023');\r\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n(0,_modules_pageScroll__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\r\n\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./modules/modal.js\");\n/* harmony import */ var _modules_pageScroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/pageScroll */ \"./modules/pageScroll.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/calc */ \"./modules/calc.js\");\n/* harmony import */ var _modules_formValidate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/formValidate */ \"./modules/formValidate.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('19 september 2023');\r\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n(0,_modules_pageScroll__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\r\n(0,_modules_calc__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\r\n(0,_modules_formValidate__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\r\n\n\n//# sourceURL=webpack:///./index.js?");
+
+/***/ }),
+
+/***/ "./modules/calc.js":
+/*!*************************!*\
+  !*** ./modules/calc.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst calc = () => {\r\n  const calcSquare = document.querySelector('.calc-square');\r\n  const calcCount = document.querySelector('.calc-count');\r\n  const calcDay = document.querySelector('.calc-day');\r\n\r\n  const validateInput = e => {\r\n    e.target.value = e.target.value.replace(/\\D/, '');\r\n  };\r\n\r\n  calcSquare.addEventListener('input', validateInput);\r\n  calcCount.addEventListener('input', validateInput);\r\n  calcDay.addEventListener('input', validateInput);\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calc);\r\n\n\n//# sourceURL=webpack:///./modules/calc.js?");
+
+/***/ }),
+
+/***/ "./modules/formValidate.js":
+/*!*********************************!*\
+  !*** ./modules/formValidate.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst formValidate = () => {\r\n  const inputsText = document.querySelectorAll('input[type=\"text\"]:not(.calc-item)');\r\n  const inputMessage = document.querySelector('input[placeholder=\"Ваше сообщение\"]');\r\n  const inputsEmail = document.querySelectorAll('input[type=\"email\"]');\r\n  const inputsPhone = document.querySelectorAll('input[type=\"tel\"]');\r\n\r\n  const INPUT_TEXT_PATTERN = /[^-\\sа-яА-ЯЁё]/;\r\n  const INPUT_EMAIL_PATTERN = /[^\\w@\\-_.!~*`]/;\r\n  const INPUT_PHONE_PATTERN = /[^\\d()-]/;\r\n\r\n  const validateInput = (e, pattern) => {\r\n    e.target.value = e.target.value.replace(pattern, '');\r\n  };\r\n\r\n  inputsText.forEach(input => input.addEventListener('input', e => validateInput(e, INPUT_TEXT_PATTERN)));\r\n  inputMessage.addEventListener('input', e => validateInput(e, INPUT_TEXT_PATTERN));\r\n  inputsEmail.forEach(input => input.addEventListener('input', e => validateInput(e, INPUT_EMAIL_PATTERN)));\r\n  inputsPhone.forEach(input => input.addEventListener('input', e => validateInput(e, INPUT_PHONE_PATTERN)));\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formValidate);\r\n\n\n//# sourceURL=webpack:///./modules/formValidate.js?");
 
 /***/ }),
 
