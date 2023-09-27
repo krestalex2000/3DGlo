@@ -1,7 +1,6 @@
 const modal = () => {
   const buttons = document.querySelectorAll('.popup-btn');
   const modal = document.querySelector('.popup');
-  const closeBtn = modal.querySelector('.popup-close');
 
   let idInterval;
   let count = 0;
@@ -42,8 +41,12 @@ const modal = () => {
     });
   });
 
-  closeBtn.addEventListener('click', () => {
-    if (document.body.clientWidth >= 768) {
+  modal.addEventListener('click', e => {
+    if (
+      !e.target.closest('.popup-content') ||
+      (e.target.classList.contains('popup-close') &&
+        document.body.clientWidth >= 768)
+    ) {
       modalAnimate('none');
     } else {
       modal.style.display = 'none';
