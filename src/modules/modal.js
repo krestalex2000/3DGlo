@@ -1,39 +1,22 @@
+import { animate } from './helpers';
+
 const modal = () => {
   const buttons = document.querySelectorAll('.popup-btn');
   const modal = document.querySelector('.popup');
 
-  let idInterval;
-  let count = 0;
-
-  const modalAnimate = display => {
-    if (display === 'block') {
-      count += 3;
-      idInterval = requestAnimationFrame(() => modalAnimate(display));
-
-      if (count >= 0 && count <= 100) {
-        modal.style.opacity = count + '%';
-        modal.style.display = `${display}`;
-      } else {
-        cancelAnimationFrame(idInterval);
-      }
-    }
-    if (display === 'none') {
-      count -= 3;
-      idInterval = requestAnimationFrame(() => modalAnimate(display));
-
-      if (count >= 0 && count <= 100) {
-        modal.style.opacity = count + '%';
-      } else {
-        modal.style.display = `${display}`;
-        cancelAnimationFrame(idInterval);
-      }
-    }
-  };
-
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       if (document.body.clientWidth >= 768) {
-        modalAnimate('block');
+        animate({
+          duration: 1000,
+          timing(timeFraction) {
+            return timeFraction;
+          },
+          draw(progress) {
+            modal.style.display = 'block';
+            modal.style.opacity = (progress * 100) + '%';
+          },
+        });
       } else {
         modal.style.display = 'block';
         modal.style.opacity = '100%';
@@ -47,7 +30,16 @@ const modal = () => {
       (e.target.classList.contains('popup-close') &&
         document.body.clientWidth >= 768)
     ) {
-      modalAnimate('none');
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          modal.style.opacity = 100 - (progress * 100) + '%';
+          setTimeout(() => modal.style.display = 'none', 1000);
+        },
+      });
     } else {
       modal.style.display = 'none';
       modal.style.opacity = '0';
