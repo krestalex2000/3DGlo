@@ -26,9 +26,9 @@ const modal = () => {
 
   modal.addEventListener('click', e => {
     if (
-      !e.target.closest('.popup-content') ||
-      (e.target.classList.contains('popup-close') &&
-        document.body.clientWidth >= 768)
+      (!e.target.closest('.popup-content') ||
+      e.target.classList.contains('popup-close') || e.target.classList.contains('form-btn')) &&
+        document.body.clientWidth >= 768
     ) {
       animate({
         duration: 1000,
@@ -40,7 +40,12 @@ const modal = () => {
           setTimeout(() => modal.style.display = 'none', 1000);
         },
       });
-    } else {
+    } else if (
+      document.body.clientWidth < 768 &&
+      (!e.target.closest('.popup-content') ||
+        e.target.classList.contains('popup-close') ||
+        e.target.classList.contains('form-btn'))
+    ) {
       modal.style.display = 'none';
       modal.style.opacity = '0';
     }
